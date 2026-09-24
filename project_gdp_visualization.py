@@ -1,8 +1,7 @@
 #coding:gbk
 """
-×ÛºÏÏîÄ¿:ÊÀĞĞÀúÊ·Êı¾İ»ù±¾·ÖÀà¼°Æä¿ÉÊÓ»¯
-×÷Õß£ºÑîÀÚ
-ÈÕÆÚ£º2020Äê6ÔÂ5ÈÕ
+ç»¼åˆé¡¹ç›®:ä¸–è¡Œå†å²æ•°æ®åŸºæœ¬åˆ†ç±»åŠå…¶å¯è§†åŒ–
+æ—¥æœŸï¼š2020å¹´6æœˆ5æ—¥
 
 """
 
@@ -54,15 +53,15 @@ def build_map_dict_by_name(gdpinfo, plot_countries, year):
 	return tuple2			
 def render_world_map(gdpinfo, plot_countries, year, map_file):
 	worldmap_chart=pygal.maps.world.World()
-	worldmap_chart.title="{}ÄêÈ«ÇòGDP·Ö²¼Í¼".format(year)			
+	worldmap_chart.title="{}å¹´å…¨çƒGDPåˆ†å¸ƒå›¾".format(year)			
 	worldmap_chart.add(year,build_map_dict_by_name(gdpinfo, plot_countries, year)[0])
 	worldmap_chart.add('Not find in the world bank',build_map_dict_by_name(gdpinfo, plot_countries, year)[1])
 	worldmap_chart.add('no data this year',build_map_dict_by_name(gdpinfo, plot_countries, year)[2])
 	worldmap_chart.render_to_file(map_file)
 	
-def test_render_world_map(year):  #²âÊÔº¯Êı
+def test_render_world_map(year):  #æµ‹è¯•å‡½æ•°
     """
-    ¶Ô¸÷¹¦ÄÜº¯Êı½øĞĞ²âÊÔ
+    å¯¹å„åŠŸèƒ½å‡½æ•°è¿›è¡Œæµ‹è¯•
     """
     gdpinfo = {
         "gdpfile": "isp_gdp.csv",
@@ -72,18 +71,18 @@ def test_render_world_map(year):  #²âÊÔº¯Êı
         "max_year": 2015,
         "country_name": "Country Name",
         "country_code": "Country Code"
-    } #¶¨ÒåÊı¾İ×Öµä
+    } #å®šä¹‰æ•°æ®å­—å…¸
   
    
-    pygal_countries = pygal.maps.world.COUNTRIES   # »ñµÃ»æÍ¼¿âpygal¹ú¼Ò´úÂë×Öµä
+    pygal_countries = pygal.maps.world.COUNTRIES   # è·å¾—ç»˜å›¾åº“pygalå›½å®¶ä»£ç å­—å…¸
 
-    # ²âÊÔÊ±¿ÉÒÔ1970ÄêÎªÀı£¬¶Ôº¯Êı¼ÌĞø²âÊÔ£¬½«ÔËĞĞ½á¹ûÓëÌá¹©µÄsvg½øĞĞ¶Ô±È£¬ÆäËüÄê·İ¿É½«ÎÄ¼şÖØĞÂÃüÃû
+    # æµ‹è¯•æ—¶å¯ä»¥1970å¹´ä¸ºä¾‹ï¼Œå¯¹å‡½æ•°ç»§ç»­æµ‹è¯•ï¼Œå°†è¿è¡Œç»“æœä¸æä¾›çš„svgè¿›è¡Œå¯¹æ¯”ï¼Œå…¶å®ƒå¹´ä»½å¯å°†æ–‡ä»¶é‡æ–°å‘½å
     render_world_map(gdpinfo, pygal_countries, year, "isp_gdp_world_name_{}.svg".format(year))
-    print('ÎÄ¼şÒÑÉú³É')
+    print('æ–‡ä»¶å·²ç”Ÿæˆ')
     
-print("»¶Ó­Ê¹ÓÃÊÀĞĞGDPÊı¾İ¿ÉÊÓ»¯²éÑ¯")
+print("æ¬¢è¿ä½¿ç”¨ä¸–è¡ŒGDPæ•°æ®å¯è§†åŒ–æŸ¥è¯¢")
 print("----------------------")
-year=input("ÇëÊäÈëĞè²éÑ¯µÄ¾ßÌåÄê·İ:")
+year=input("è¯·è¾“å…¥éœ€æŸ¥è¯¢çš„å…·ä½“å¹´ä»½:")
 test_render_world_map(year)
 
 	
